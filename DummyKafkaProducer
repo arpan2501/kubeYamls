@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dkp
+  labels:
+    app: dkp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dkp
+  template:
+    metadata:
+      labels:
+        app: dkp
+    spec:
+      containers:
+      - name: dkp
+        image: arpan2501/webhook:1.0
+        env:
+        - name: BOOTSTRAP_SERVER
+          value: 127.0.0.1:9092
+        resources:
+            limits:
+              cpu: 500m
+              memory: .6Gi
+            requests:
+              cpu: 400m
+              memory: .3Gi
