@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dkc
+  labels:
+    app: dkc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dkc
+  template:
+    metadata:
+      labels:
+        app: dkc
+    spec:
+      containers:
+      - name: dkc
+        image: arpan2501/dkc:1.0
+        env:
+        - name: BROKER_IP
+          value: 10.246.156.137:9092
+        - name: kafkaTopicName
+          value: aiops-prod
