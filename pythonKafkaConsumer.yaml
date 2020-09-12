@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    component: pre-parser-service
+  name: pre-parser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pre-parser
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pre-parser
+    spec:
+      containers:
+        -
+          image: "arpan2501/pre_parser:2.0"
+          imagePullPolicy: Always
+          name: pre-parser
+          envFrom:
+            - configMapRef:
+                name: pre-parser-config
+          resources:
+            limits:
+              cpu: 200m
+              memory: .3Gi
+            requests:
+              cpu: 200m
+              memory: .3Gi
+      imagePullSecrets:
+        -
+          name: docker-credentials
+      restartPolicy: Always
