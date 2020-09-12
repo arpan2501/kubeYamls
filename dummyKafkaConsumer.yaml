@@ -19,6 +19,6 @@ spec:
         image: arpan2501/dkc:1.0
         env:
         - name: BROKER_IP
-          value: 10.246.156.137:9092
+          value: 0.0.0.0:9092
         - name: kafkaTopicName
-          value: aiops-prod
+          value: test
