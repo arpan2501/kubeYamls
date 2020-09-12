@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pre-parser-config
+  labels:
+    app: pre-parser
+data:
+   ci_text_splitter : ": "
+   ci_list_splitter : ","
+   consume_topic : "ps_cohesity_json"
+   consume_group_id : "pre_parser_cohesity_grp3"
+   produce_topic : "ps_cohesity_clean_json"
+   broker_list : "0.0.0.0:9092"
+   auto_commit : "False"
+   offset_status : "latest"
+   status : "open"
+   monitoring_tool : "cohesity"
